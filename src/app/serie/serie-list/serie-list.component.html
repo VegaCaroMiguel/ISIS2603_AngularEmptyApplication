@@ -1,0 +1,37 @@
+<!-- src/app/series/series-list/series-list.component.html -->
+<div class="container mt-4">
+  <h3 class="bg-info text-white p-2"><i class="bi bi-tv"></i> TV Series</h3>
+  <div class="row">
+    <div class="col-8">
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Channel</th>
+            <th>Seasons</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let serie of series" (click)="selectSerie(serie)">
+            <td>{{ serie.id }}</td>
+            <td><a href="#" (click)="$event.preventDefault()">{{ serie.name }}</a></td>
+            <td>{{ serie.channel }}</td>
+            <td>{{ serie.seasons }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Seasons average: {{ averageSeasons }}</strong></p>
+    </div>
+    <div class="col-4" *ngIf="selectedSerie">
+      <div class="card">
+        <img [src]="selectedSerie.poster" class="card-img-top" [alt]="selectedSerie.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ selectedSerie.name }}</h5>
+          <p class="card-text">{{ selectedSerie.description }}</p>
+          <a [href]="selectedSerie.webpage" target="_blank" class="btn btn-primary">More Info</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
